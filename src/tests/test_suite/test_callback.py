@@ -16,12 +16,14 @@ class CallbackTests(unittest.TestCase):
     def testDefaultForNull(self):
         """Test that C# can use null for an optional python argument"""
         retVal = test_instance.Call_simpleDefaultArg_WithNull(__name__)
-        self.assertEquals(retVal, 'test')
+        pythonRetVal = simpleDefaultArg(None)
+        self.assertEquals(retVal, pythonRetVal)
 
     def testDefaultForNone(self):
         """Test that C# can use no argument for an optional python argument"""
         retVal = test_instance.Call_simpleDefaultArg_WithEmptyArgs(__name__)
-        self.assertEquals(retVal, 'test')
+        pythonRetVal = simpleDefaultArg()
+        self.assertEquals(retVal, pythonRetVal)
 
 def test_suite():
     return unittest.makeSuite(CallbackTests)
